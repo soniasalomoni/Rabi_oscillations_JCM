@@ -277,7 +277,7 @@ pytest prop_test.py
 
 To run a jobscript, for example `jobPDF.sh`, first type this command to make the script executable:
 ```bash
-chmod u+x jobPDF.sh
+chmod u+x Jobs/jobPDF.sh
 ```
 Then:
 ```
