@@ -133,7 +133,7 @@ and this allows to write down differential equations for the coefficients <img s
 Substituting the first equation into the second and imposing the initial conditions we obtain:
 
 <p align="center">
- <img src="https://latex.codecogs.com/svg.image?C_i&space;(t)&space;&space;=&space;i&space;\frac{\Omega}{\Omega_n}\cos\left(\frac{\Omega_n&space;t}{2}\right)&space;e^{i\Delta&space;t&space;/2}"/><br>
+ <img src="https://latex.codecogs.com/svg.image?C_i&space;(t)&space;&space;=&space;\left(i&space;\frac{\Delta}{\Omega_n}\sin\left(\frac{\Omega_n&space;t}{2}\right)&space;+&space;\cos\left(\frac{\Omega_n&space;t}{2}\right)\right)&space;e^{-i\Delta&space;t&space;/2}"/><br>
  <img src="https://latex.codecogs.com/svg.image?C_f&space;(t)&space;&space;=&space;-i&space;\frac{\Omega}{\Omega_n}\sin\left(\frac{\Omega_n&space;t}{2}\right)&space;e^{i\Delta&space;t&space;/2}"/>
 </p>
 
@@ -147,7 +147,7 @@ The configuration associated with  <img src="https://latex.codecogs.com/svg.imag
 Is interesting to see that in the absence of light (<img src="https://latex.codecogs.com/svg.image?n&space;=&space;0">), there is still a non-zero transition probability: this phenomenon is known as *vacuum Rabi oscillations*.
 
 <p  align="center">
- <img src="./Images/output_Dirac.png" width="90%" height="90%">
+ <img src="./Images/output_Dirac.png" width="80%" height="80%">
 </p>
 
 ### Initial conditions: mixtures
@@ -184,7 +184,7 @@ This distribution (termed *thermal* or *chaotic*) maximizes the field entropy fo
 It is found that populations, for an average number of photons greater than 0, they no longer oscillate in a sinusoidal way: there is almost no trace of population oscillations and after an initial collapse we can observe irregular fluctuations. Furthermore, collapse is found to occur at a precise time scale <img src="https://latex.codecogs.com/svg.image?t_c">, fixed by the generalized Rabi frequency. For very large <img src="https://latex.codecogs.com/svg.image?\bar{n}"> we find that: <img src="https://latex.codecogs.com/svg.image?t_c=2/\Omega_n">.
 
 <p  align="center">
- <img src="./Images/output_BoseEinstein.png" width="90%" height="90%">
+ <img src="./Images/output_BoseEinstein.png" width="80%" height="80%">
 </p>
 
 - In the atom-field interaction, one of the most interesting phenomena is the *collapse-revival effect* in population inversion of atomic levels. To see this behavior we have to consider the initial condition in which the field is in a [*coherent state*](https://en.wikipedia.org/wiki/Coherent_state). In this case the number of photons follows a [**Poisson distribution**](https://en.wikipedia.org/wiki/Poisson_distribution):
@@ -197,7 +197,7 @@ It is found that populations, for an average number of photons greater than 0, t
  What was much more remarkable than the collapses, and unforeseen, was that the Rabi oscillations should revive after a quiescent interval. This *revival time* is essentially the inverse of the separation between distinct Rabi frequencies: <img src="https://latex.codecogs.com/svg.image?t_r&space;=&space;2\pi\sqrt{\bar{n}}\,t_c">.
 
 <p  align="center">
- <img src="./Images/output_Poisson.png" width="90%" height="90%">
+ <img src="./Images/output_Poisson.png" width="80%" height="80%">
 </p>
 
 
