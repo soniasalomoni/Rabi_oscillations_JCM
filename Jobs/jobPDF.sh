@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ..
-
 PDFs="Dirac Poisson BoseEinstein"
 
 for PDF in $PDFs; do

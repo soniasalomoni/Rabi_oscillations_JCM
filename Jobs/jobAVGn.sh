@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ..
-
 AVGn="10 30 50"
 
 for n in $AVGn; do
