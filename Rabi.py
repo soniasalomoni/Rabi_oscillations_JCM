@@ -90,8 +90,5 @@ if SAVE_TXT == True:
     save_txt(simulation, OUT_LABEL)
 
 if SAVE_PNG == True:
-    plt.savefig('Utilities/{}.png'.format(OUT_LABEL))
+    plt.savefig('Output/{}.png'.format(OUT_LABEL))
 
-# save_plots(fig1, fig2, density_plot_path, potential_plot_path)
-
-plt.show()
