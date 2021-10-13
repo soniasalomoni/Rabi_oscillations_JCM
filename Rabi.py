@@ -27,6 +27,8 @@ from Classes.Simulation import Simulation
 from Utilities.saving import save_txt
 from Utilities.plotting import plot_W
 
+print('\t ... ', end='\r')
+
 # ----------------- #
 # initialize config #
 # ----------------- #
@@ -91,4 +93,7 @@ if SAVE_TXT == True:
 
 if SAVE_PNG == True:
     plt.savefig('Output/{}.png'.format(OUT_LABEL))
+
+print('Rabi simulation completed.')
+print('Check the Output directory for results.')
 
