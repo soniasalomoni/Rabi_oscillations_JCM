@@ -36,3 +36,6 @@ cd ..
 python Rabi.py
 
 done
+
+echo "---------------------------------------"
+echo "Job done."
