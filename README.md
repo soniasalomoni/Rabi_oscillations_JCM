@@ -13,7 +13,7 @@ The relative simplicity of the JCM and the ease with which it can be extended th
 - Fabio D. Bonani. **"The Jaynes-Cummings model"**. (2020). URL:
 [https://www.ifsc.usp.br/~strontium/Teaching/Material2020-1 SFI5814 Atomicamolecular/Fabio - Monograph - Jaynes-Cummings model.pdf](https://www.ifsc.usp.br/~strontium/Teaching/Material2020-1%20SFI5814%20Atomicamolecular/Fabio%20-%20Monograph%20-%20Jaynes-Cummings%20model.pdf)  
 
-<img src="https://img.icons8.com/ios/50/000000/notion.png" width="30px" height="30px"> Check this [Notion page](https://radical-ketch-a32.notion.site/The-Jaynes-Cummings-model-56651cd955934b1dae5f9bb668545a4f)  
+<img src="https://img.icons8.com/ios/50/000000/notion.png" width="30px" height="30px"> Check this [Notion page](https://sonia-salomoni.notion.site/The-Jaynes-Cummings-model-56651cd955934b1dae5f9bb668545a4f)  
 
 **INDEX**
 
@@ -23,7 +23,7 @@ The relative simplicity of the JCM and the ease with which it can be extended th
 > - [Rabi oscillations](#Rabi-oscillations)  
 > - [Initial conditions: mixtures](#Initial-conditions-mixtures)  
 >  
-> [**Repository Structure**](#Code-Structure)
+> [**Repository Structure**](#Repository-Structure)
 > - [Classes](#Classes)
 > - [Utilities](#Utilities)
 > - [Testing](#Testing)
@@ -253,33 +253,35 @@ This folder contains two *jobscripts* (**.sh** files) containing the setup infor
 
 ## Usage
 
-To clone the repository type:
+To **clone the repository** type:
 ```bash
 git clone https://github.com/soniasalomoni/Rabi_oscillations_JCM.git
 cd Rabi_oscillations_JCM
 ```
-To install the dependencies type the command:
+To **install the dependencies** type the command:
 ```bash
 pip install -r Utilities/reqs.txt
 ```
 
-To launch the main script `Rabi.py`, with the possibility to specify the configuration file as `sys.argv[1]`, type the command:
+To **launch the main script** `Rabi.py`, just type:
+```bash
+python Rabi.py
+```
+you also have the possibility to specify the name of the configuration file as `sys.argv[1]` (**input.txt** is the default configuration file), for example:
 ```bash
 python Rabi.py my_input_file.txt
 ```
 
-The default configuration file if not specified through `sys.argv[1]` is `input.txt`.
-
-To run a test, for example `prop_test.py`, type the command:
+To **run a test**, for example `prop_test.py`, type the command:
 ```bash
-pytest prop_test.py
+pytest Testing/prop_test.py
 ```
 
-To run a jobscript, for example `jobPDF.sh`, first type this command to make the script executable:
+To **run a jobscript**, for example `jobPDF.sh`, first type this command to make the script executable:
 ```bash
 chmod u+x Jobs/jobPDF.sh
 ```
-Then:
+then:
 ```
 ./Jobs/jobPDF.sh
 ```
