@@ -1,7 +1,7 @@
 
 [field]
 avg_n = 10
-pdf_n = BoseEinstein
+pdf_n = Poisson
 cut_n = 100
 
 [atom]
@@ -13,11 +13,11 @@ int_coupling = 1
 int_detuning = 0
 
 [simulation]
-time = 100
+time = 200
 step = 0.01
 
 [output]
 save_txt = True
 save_png = True
-out_label = output_BoseEinstein
+out_label = output
 
