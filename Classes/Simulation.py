@@ -4,7 +4,7 @@ from scipy.integrate import odeint
 class Simulation():
     """
     The Simulation class contains a System instance and time information required to run a simulation on it.
-    In particular is defined an odeint-like function for complex valued differential equations (self.odeintz).
+    In particular, it defines an odeint-like function for complex valued differential equations (self.odeintz).
     """
 
     def __init__(self, System, time, tstep) -> None:
@@ -30,7 +30,7 @@ class Simulation():
         
         self.System = System
         self.time = np.arange(0,time,tstep)
-        self.thr = 0.01
+        self.thr = 0.01 # threshold for the rate tstep/time
         self.W_array = []
 
         if tstep/time > self.thr:
@@ -63,13 +63,13 @@ class Simulation():
             
         Raise:
         ------
-            ValueError if you pass odeint arguments not supported dy odeintz
+            ValueError if you pass odeint arguments not supported by odeintz
             (Jacobian and infodict related arguments)
         
         """
         # Disallow Jacobian and infodict related arguments
-        _unsupported_odeint_args = ['Dfun', 'col_deriv', 'ml', 'mu','full_output']
-        bad_args = [arg for arg in kwargs if arg in _unsupported_odeint_args]
+        unsupported_odeint_args = ['Dfun', 'col_deriv', 'ml', 'mu','full_output']
+        bad_args = [arg for arg in kwargs if arg in unsupported_odeint_args]
         if len(bad_args) > 0:
             raise ValueError("The odeint argument %r is not supported by "
                             "odeintz." % (bad_args[0],))
