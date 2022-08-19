@@ -5,18 +5,20 @@
 
 # The Jaynes-Cummings model and Rabi Oscillations
 
-The [**Jaynes-Cummings model**](https://en.wikipedia.org/wiki/Jaynes%E2%80%93Cummings_model) (JCM) is a soluble fully quantum mechanical model of an atom in a field. It was first used in 1963 to examine the classical aspects of spontaneous emission and to reveal the existence of [**Rabi oscillations**](https://en.wikipedia.org/wiki/Rabi_cycle) in atomic excitation probabilities for fields with sharply defined energy (or photon number).
-For fields having a statistical distribution of photon numbers the oscillations collapse to an expected steady value. In 1980 it was discovered that with appropriate initial conditions (e.g. a near-classical field), the Rabi oscillations would eventually revive, only to collapse and revive repeatedly in a complicated pattern. The existence of these revivals, present in the analytic solutions of the JCM, provided direct evidence for discreteness of field excitation (photons) and hence for the truly quantum nature of radiation.
+The [**Jaynes-Cummings model**](https://en.wikipedia.org/wiki/Jaynes%E2%80%93Cummings_model) (JCM) is a solvable fully quantum mechanical model of an atom in a field. It was first used in 1963 to examine the classical aspects of spontaneous emission and to reveal the existence of [**Rabi oscillations**](https://en.wikipedia.org/wiki/Rabi_cycle) in atomic excitation probabilities for fields with sharply defined energy (or photon number).
+For fields having a statistical distribution of photon numbers the oscillations collapse to an expected steady value. In 1980 it was discovered that with appropriate initial conditions (e.g. a near-classical field), the Rabi oscillations would eventually revive, only to collapse and revive repeatedly in a complicated pattern. The existence of these revivals, present in the analytic solutions of the JCM, provided direct evidence for the discreteness of field excitation (photons) and hence for the truly quantum nature of radiation.
 The relative simplicity of the JCM and the ease with which it can be extended through analytic expressions or numerical computation continues to motivate attention. Here is presented a brief overview of this theory; if you are interested in learning more about the topic, I recommend reading these papers:
 
 - Bruce W. Shore and Peter L. Knight. **"The Jaynes-Cummings model"**. In: *Journal of Modern Optics*, vol. 40, no. 7, 1195-1238 (1993). DOI: 10.1080/09500349314551321. URL:  [https://www.researchgate.net/publication/243401964_The_Jaynes-Cummings_Model](https://www.researchgate.net/publication/243401964_The_Jaynes-Cummings_Model)
 - Fabio D. Bonani. **"The Jaynes-Cummings model"**. (2020). URL:
 [https://www.ifsc.usp.br/~strontium/Teaching/Material2020-1 SFI5814 Atomicamolecular/Fabio - Monograph - Jaynes-Cummings model.pdf](https://www.ifsc.usp.br/~strontium/Teaching/Material2020-1%20SFI5814%20Atomicamolecular/Fabio%20-%20Monograph%20-%20Jaynes-Cummings%20model.pdf)  
 
-<img src="https://img.icons8.com/ios/50/000000/notion.png" width="30px" height="30px"> Check this [Notion page](https://sonia-salomoni.notion.site/The-Jaynes-Cummings-model-56651cd955934b1dae5f9bb668545a4f)  
+<img src="https://img.icons8.com/ios/50/000000/notion.png" width="30px" height="30px"> Check this [Notion page](https://sonia-salomoni.notion.site/The-Jaynes-Cummings-model-56651cd955934b1dae5f9bb668545a4f)
 
-**INDEX**
-  
+___
+
+> ### **INDEX**
+>
 > [**Repository Structure**](#Repository-Structure)
 > - [Classes](#Classes)
 > - [Utilities](#Utilities)
@@ -26,6 +28,7 @@ The relative simplicity of the JCM and the ease with which it can be extended th
 >
 > [**Usage**](#Usage)
 
+___
 
 ## Repository Structure
 
