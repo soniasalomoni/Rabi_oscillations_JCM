@@ -4,6 +4,7 @@
 
 from hypothesis import strategies as st
 from hypothesis import given
+
 import numpy as np
 import pytest
 import sys
@@ -13,7 +14,7 @@ from Classes.Field import *
 
 def is_PDF(pdf, N):
     """
-    This function check if the function pdf is a Probability Density Function:
+    This function checks if the function pdf is a Probability Density Function:
     - pdf(n) is non-negative for all possible values of n.
     - The sum of pdf(n) over all possible values of n is normalized.
     Because we're dealing with PDF of photons, n is a positive integer
@@ -22,7 +23,7 @@ def is_PDF(pdf, N):
     Parameters:
     -----------
     pdf : callable(n)
-        the function we want to check
+        the function to be tested
     N : int
         the maximum value for n
 
