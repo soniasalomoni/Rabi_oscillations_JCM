@@ -9,7 +9,7 @@ class System():
     of the system using the Jaynes-Cummings model Hamiltonian.
     """
 
-    def __init__(self, Field, Atom, Omega, Delta) -> None:
+    def __init__(self, Field, Atom, omega, delta) -> None:
         """
         Initialized all the attributes of the class.
 
@@ -19,23 +19,23 @@ class System():
             the cavity field instance
         Atom : Atom
             the atom instance
-        Omega: float
+        omega: float
             the interaction coupling
-        Delta: float
+        delta: float
             the interaction detuning
 
         Raise:
         ------
-            ValueError if the interaction coefficiet (Omega) is negative.
+            ValueError if the interaction coefficiet (omega) is negative.
 
         """
         
         self.Field = Field
         self.Atom = Atom
-        self.Omega = Omega
-        self.Delta = Delta
+        self.omega = omega
+        self.delta = delta
 
-        if self.Omega < 0:
+        if self.omega < 0:
             raise ValueError("The interaction coefficient (int_coupling) must be positive or 0.\n")
 
 
@@ -65,7 +65,7 @@ class System():
 
         """
         # dg/dt = func_g(g,e)
-        dgdt = -1j*(self.Omega/2 * np.sqrt(n) * z[1] - 1/2 * self.Delta * z[0])
+        dgdt = -1j*(self.omega/2 * np.sqrt(n) * z[1] - 1/2 * self.delta * z[0])
         # de/dt = func_e(g,e)
-        dedt = -1j*(self.Omega/2 * np.sqrt(n) * z[0] + 1/2 * self.Delta * z[1])
+        dedt = -1j*(self.omega/2 * np.sqrt(n) * z[0] + 1/2 * self.delta * z[1])
         return dgdt, dedt
