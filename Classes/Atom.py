@@ -2,6 +2,7 @@
 class Atom():
     """
     The Atom class stores the parameters that describe the state of the atom in the cavity.
+    By defalut,  the Atom is initialized in the ground state.
     """
 
     def __init__(self,Cg=1,Ce=0) -> None:
