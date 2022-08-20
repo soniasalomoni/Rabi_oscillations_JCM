@@ -22,6 +22,7 @@ def test_Atom_init(coeff):
     """
     C1 = coeff
     C2 = np.sqrt(1-coeff**2)
+    Atom()
     Atom(C1,C2)
     Atom(C2,C1)    
 
