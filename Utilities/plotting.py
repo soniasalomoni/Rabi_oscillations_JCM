@@ -1,13 +1,7 @@
-# --------------- #
-# import packages #
-# --------------- #
 
 import matplotlib.pyplot as plt
 
-# ---------------- #
-# define functions #
-# ---------------- #
-
+# define plotting function
 
 def plot_W(simulation):
     """
