@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This job launches 3 simulations with different average number of photons
+# The other parameters are listed below
+
 AVGn="10 30 50"
 
 for n in $AVGn; do
