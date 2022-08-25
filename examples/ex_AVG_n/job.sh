@@ -6,8 +6,6 @@
 AVGn="10 30 50"
 
 for n in $AVGn; do
-
-cd Utilities
 cat > input.txt << EOF
 
 [field]
@@ -33,8 +31,6 @@ save_png = True
 out_label = output_$n
 
 EOF
-
-cd ..
 
 python Rabi.py
 

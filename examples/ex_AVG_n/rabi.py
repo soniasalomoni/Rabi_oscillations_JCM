@@ -1,11 +1,11 @@
 
 import configparser
 import matplotlib.pyplot as plt
+import sys
 from sys import argv
 
-sys.path.append('.')
-from rabi.classes import *
-from rabi.utilities import *
+sys.path.append('../../.')
+import rabi_module as rabi
 
 print('\t ... ', end='\r')
 
@@ -19,7 +19,7 @@ config = configparser.ConfigParser()
 if len(argv)>=2:
     config.read(argv[1])
 else:
-    config.read("Utilities/input.txt")
+    config.read("input.txt")
 
 # --------------------- #
 # initialize parameters #
@@ -46,10 +46,10 @@ OUT_LABEL = config.get('output','out_label')
 # initialize class instances #
 # -------------------------- #
 
-field = Field(AVG_N,PDF_N,CUT_N)
-atom = Atom(Cg_0,Ce_0)
-system = System(field, atom, OMEGA, DELTA)
-simulation = Simulation(system,TMAX,TSTEP)
+field = rabi.Field(AVG_N,PDF_N,CUT_N)
+atom = rabi.Atom(Cg_0,Ce_0)
+system = rabi.System(field, atom, OMEGA, DELTA)
+simulation = rabi.Simulation(system,TMAX,TSTEP)
 
 # ------------------ #
 # run the simulation #
@@ -58,15 +58,13 @@ simulation = Simulation(system,TMAX,TSTEP)
 simulation.run()
 
 # plotting
-fig = plot_W(simulation)
+fig = rabi.plot_W(simulation)
 
 # saving
 if SAVE_TXT == True:
-    save_txt(simulation, OUT_LABEL)
+    rabi.save_txt(simulation, OUT_LABEL)
 
 if SAVE_PNG == True:
-    plt.savefig('Output/{}.png'.format(OUT_LABEL))
+    plt.savefig('./{}.png'.format(OUT_LABEL))
 
 print('Rabi simulation completed.')
-print('Check the Output directory for results.')
-

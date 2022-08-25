@@ -3,8 +3,6 @@
 PDFs="Dirac Poisson BoseEinstein"
 
 for PDF in $PDFs; do
-
-cd Utilities
 cat > input.txt << EOF
 
 [field]
@@ -30,8 +28,6 @@ save_png = True
 out_label = output_$PDF
 
 EOF
-
-cd ..
 
 python Rabi.py
 
