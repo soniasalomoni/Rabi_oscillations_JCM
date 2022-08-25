@@ -9,8 +9,8 @@ import numpy as np
 import pytest
 import sys
 
-sys.path.append('.')
-from Classes.Atom import *
+sys.path.append('../.')
+import rabi_module as rabi
 
 # ----------------------------------------------------- #
 
@@ -22,9 +22,9 @@ def test_Atom_init(coeff):
     """
     C1 = coeff
     C2 = np.sqrt(1-coeff**2)
-    Atom()
-    Atom(C1,C2)
-    Atom(C2,C1)    
+    rabi.Atom()
+    rabi.Atom(C1,C2)
+    rabi.Atom(C2,C1)    
 
 def test_Atom_raises():
     """
@@ -32,12 +32,12 @@ def test_Atom_raises():
     invalid states are given to Atom constructor.
     """
     with pytest.raises(ValueError):
-        Atom(0,0)
+        rabi.Atom(0,0)
     with pytest.raises(ValueError):
-        Atom(1,1)
+        rabi.Atom(1,1)
     with pytest.raises(ValueError):
-        Atom(0,-1)
+        rabi.Atom(0,-1)
     with pytest.raises(ValueError):
-        Atom(0,10)
+        rabi.Atom(0,10)
     
     

@@ -9,8 +9,8 @@ import numpy as np
 import pytest
 import sys
 
-sys.path.append('.')
-from Classes.Field import *
+sys.path.append('../.')
+import rabi_module as rabi
 
 def is_PDF(pdf, N):
     """
@@ -40,19 +40,19 @@ def is_PDF(pdf, N):
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Dirac"), CUT_N = st.integers(100,300))
 def test_Dirac(AVG_N,PDF_N,CUT_N):
-    field = Field(AVG_N,PDF_N,CUT_N)
+    field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.Dirac,field.cut_n)
     assert(bool == True) , "Field.Dirac is not a PDF"
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Poisson"), CUT_N = st.integers(100,300))
 def test_Poisson(AVG_N,PDF_N,CUT_N):
-    field = Field(AVG_N,PDF_N,CUT_N)
+    field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.Poisson,field.cut_n)
     assert(bool == True) , "Field.Poisson is not a PDF"
 
 @given(AVG_N = st.integers(0,20), PDF_N = st.just("BoseEinstein"), CUT_N = st.integers(100,300))
 def test_BoseEinstein(AVG_N,PDF_N,CUT_N):
-    field = Field(AVG_N,PDF_N,CUT_N)
+    field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.BoseEinstein,field.cut_n)
     assert(bool == True) , "Field.BoseEinstein is not a PDF"
 
@@ -63,20 +63,20 @@ def test_Field_raises(PDF):
     invalid states are given to Atom constructor.
     """
     with pytest.raises(ValueError):
-        Field(-1,PDF,100)
+        rabi.Field(-1,PDF,100)
     with pytest.raises(ValueError):
-        Field(1,PDF,-1)
+        rabi.Field(1,PDF,-1)
     with pytest.raises(ValueError):
-        Field(-100,PDF,-1)
+        rabi.Field(-100,PDF,-1)
     with pytest.raises(ValueError):
-        Field(100,PDF,1)
+        rabi.Field(100,PDF,1)
 
 def test_Field_thr():        
-    Field(99,"Dirac",100)
+    rabi.Field(99,"Dirac",100)
     with pytest.raises(ValueError):
-        Field(99,"Poisson",100)
+        rabi.Field(99,"Poisson",100)
     with pytest.raises(ValueError):
-        Field(99,"BoseEinstein",100)
+        rabi.Field(99,"BoseEinstein",100)
 
 
 

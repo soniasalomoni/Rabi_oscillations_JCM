@@ -1,5 +1,5 @@
 # --------------- #
-# import packages #
+# oracle testing  #
 # --------------- #
 
 import numpy as np
@@ -8,22 +8,11 @@ from hypothesis import given
 from hypothesis import settings
 import sys
 
-sys.path.append('.')
+sys.path.append('../.')
+import rabi_module as rabi
 
-# --------------- #
-# import classes  #
-# --------------- #
 
-from Classes.Field import Field
-from Classes.Atom import Atom
-from Classes.System import System
-from Classes.Simulation import Simulation
-
-# --------------------- #
-# start oracle testing  #
-# --------------------- #
-
-def W(simulation):
+def W_analytical(simulation):
     """
     Compute the atomic inversion function using the analytical solution.
 
@@ -36,15 +25,15 @@ def W(simulation):
     W = - simulation.System.Field.PDF(0) # the cavity is empty
 
     # some useful shortcuts
-    Omega2 = simulation.System.Omega**2
-    Delta2 = simulation.System.Delta**2
+    omega2 = simulation.System.omega**2
+    delta2 = simulation.System.delta**2
 
     # we add all the contribution till the cut-off number of photons (N)
     for n in range(1,simulation.System.Field.cut_n):
-        OmegaR = np.sqrt(Delta2 + n*Omega2)
-        OmegaR2 = OmegaR**2
+        omegaR = np.sqrt(delta2 + n*omega2)
+        omegaR2 = omegaR**2
         t = simulation.time                            
-        W = W - simulation.System.Field.PDF(n)*( Delta2/OmegaR2 + ((n*Omega2)/OmegaR2)*np.cos(t*OmegaR)) 
+        W = W - simulation.System.Field.PDF(n)*( delta2/omegaR2 + ((n*omega2)/omegaR2)*np.cos(t*omegaR)) 
 
     return W
 
@@ -58,16 +47,13 @@ def test_simulation(AVG_N,PDF_N,CUT_N,Cg,Ce,OMEGA,DELTA,TIME,TSTEP):
     """
     thr = 0.001
 
-    field = Field(AVG_N,PDF_N,CUT_N)
-    atom = Atom(Cg,Ce)
-    system = System(field, atom, OMEGA, DELTA)
-    simulation1 = Simulation(system,TIME,TSTEP)
-    simulation2 = Simulation(system,TIME,TSTEP)
+    field = rabi.Field(AVG_N,PDF_N,CUT_N)
+    atom = rabi.Atom(Cg,Ce)
+    system = rabi.System(field, atom, OMEGA, DELTA)
+    simulation1 = rabi.Simulation(system,TIME,TSTEP)
+    simulation2 = rabi.Simulation(system,TIME,TSTEP)
     simulation2.run()
 
-    W1 = W(simulation1) # analytical solution
+    W1 = W_analytical(simulation1) # analytical solution
     W2 = simulation2.W_array # numerical solution
     assert(W1[0] - W2[0] < thr) , "Analytical and Numerical solutions don't coincide"
-
-
-
