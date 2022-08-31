@@ -32,7 +32,7 @@ out_label = output_$n
 
 EOF
 
-python Rabi.py
+python rabi.py
 
 done
 

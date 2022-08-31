@@ -5,5 +5,6 @@ from .classes.Field import *
 from .classes.System import *
 from .classes.Simulation import *
 
+from .utilities.reading import *
 from .utilities.plotting import *
 from .utilities.saving import *

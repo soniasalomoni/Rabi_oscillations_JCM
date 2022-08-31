@@ -29,7 +29,7 @@ out_label = output_$PDF
 
 EOF
 
-python Rabi.py
+python rabi.py
 
 done
 

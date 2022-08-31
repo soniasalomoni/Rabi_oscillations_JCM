@@ -24,7 +24,7 @@ def save_txt(simulation,label = "output"):
         the name of the .txt output file
 
     """
-    fout = open('{}.txt'.format(label),'w+')
+    fout = open('./{}.txt'.format(label),'w+')
     # write simulation input parameters
     fout.write('# This output.txt file was obtained running a\n# simulation with these input parameters\n\n')
     for line in fin.readlines():
