@@ -13,104 +13,199 @@ The relative simplicity of the JCM and the ease with which it can be extended th
 - Fabio D. Bonani. **"The Jaynes-Cummings model"**. (2020). URL:
 [https://www.ifsc.usp.br/~strontium/Teaching/Material2020-1 SFI5814 Atomicamolecular/Fabio - Monograph - Jaynes-Cummings model.pdf](https://www.ifsc.usp.br/~strontium/Teaching/Material2020-1%20SFI5814%20Atomicamolecular/Fabio%20-%20Monograph%20-%20Jaynes-Cummings%20model.pdf)  
 
-<img src="https://img.icons8.com/ios/50/000000/notion.png" width="30px" height="30px"> Check this [Notion page](https://sonia-salomoni.notion.site/The-Jaynes-Cummings-model-56651cd955934b1dae5f9bb668545a4f)
+➡️ Check also this [Notion page](https://sonia-salomoni.notion.site/The-Jaynes-Cummings-model-56651cd955934b1dae5f9bb668545a4f)
 
 ___
 
 > ### **INDEX**
 >
 > [**Repository Structure**](#Repository-Structure)
-> - [Classes](#Classes)
-> - [Utilities](#Utilities)
-> - [Testing](#Testing)
-> - [Output](#Output)
-> - [Jobs](#Jobs)
->
+> - [rabi_model](#rabi_model)
+>   - [classes](#classes)
+>   - [utilities](#utilities)
+>   - [tests](#tests)
+> - [examples](#examples)
+>   - [ex1](#ex1)
+>   - [ex2](#ex2)
+> 
 > [**Usage**](#Usage)
 
 ___
 
-## Repository Structure
+---
+
+## **Repository Structure**
 
 The repository is structured in the following folders:
+* **rabi_model**, which contains the actual package;
+* **examples**, which shows two usage examples of the code.
 
-### [Classes](https://github.com/soniasalomoni/Rabi_oscillations_JCM/tree/main/Classes)
+---
 
-This folder contains the definitions of the classes required to run the simulation. Each class is a container that collects and organizes the input data according to a physical meaning and logic. This is the hierarchical structure of the classes:
+---
+
+## **rabi_model**
+
+### **classes**
+
+This directory contains the definitions of the classes required to run the simulation.\
+Each class is a container that collects and organizes the input data according to a physical meaning and logic. This is the hierarchical structure of the classes:
 
 <p  align="center">
  <img src="./Images/schema.PNG" width="90%" height="90%">
 </p>
 
-- **`Field.py`:** this class stores the parameters that describe the cavity field  (`avg_n` the *average number of photons* <img src="https://latex.codecogs.com/svg.image?\bar{n}">, `pdf_n` the *probability density function of photons*, `cut_n` the *cut-off number of photons*). In addition, the class implements three physically relevant probability distributions of photons: `Dirac`, `Poisson`, and `BoseEinstein`.
-- **`Atom.py`:** this class stores the parameters that describe the state of the atom in the cavity (`Cg` the *initial ground state coefficient*, `Ce` the *initial excited state coefficient)*.
-- **`System.py`:** this class stores a `Field` and an `Atom` instances. In addition, the class is enriched by some interaction parameters (`int_coupling` the *interaction coupling* <img src="https://latex.codecogs.com/svg.image?\Omega">, `int_detuning` the *interaction detuning* <img src="https://latex.codecogs.com/svg.image?\Delta">).
-The class implements a set of complex differential equations through the method `Rabi_model` that models the time evolution of the system using the Jaynes-Cummings model Hamiltonian.
-- **`Simulation.py`:** this class contains a `System` instance and time information required to run a simulation on it (`time` the *simulation duration*, `tstep` the *simulation time step*). In particular, it is defined an odeint-like function for complex-valued differential equations `odeintz`.
+---
 
-### [Utilities](https://github.com/soniasalomoni/Rabi_oscillations_JCM/tree/main/Utilities)
+> ➡️ **`Atom.py`** 
+> 
+> This class stores the parameters that describe the state of the atom in the cavity:
+> * `Cg` : the *initial ground state coefficient* (float);
+> * `Ce` : the *initial excited state coefficient* (float).
+> 
+> These parameters should be positive, smaller than 1 and normalized.
 
-This folder contains several files that are required to run the simulation. In particular, we distinguish:
+---
 
-- **`input.txt`:** this is the configuration file, where we set all the simulation parameters.
-- **`reqs.txt`:** this file contains the dependencies needed in order to run the simulation.
-- **`saving.py`:** this file produces a **.txt** file containing the inversion function if `save_txt` is set to `True`.
-- **`plotting.py`:** this file handles the graphical visualization of the inversion function. The plot is saved as a **.png** file if `save_png` is set to `True`.
+> ➡️ **`Field.py`**
+> 
+>  This class stores the parameters that describe the cavity field:
+> * `avg_n` : the *average number of photons* <img src="https://latex.codecogs.com/svg.image?\bar{n}"> (integer);
+> * `pdf_n` : the *probability density function of photons* (string);
+> * `cut_n` : the *cut-off number of photons*) (integer).
+> 
+> In addition, the class implements three physically relevant probability distributions of photons: `Dirac`, `Poisson`, and `BoseEinstein`.
 
-### [Testing](https://github.com/soniasalomoni/Rabi_oscillations_JCM/tree/main/Testing)
+---
 
-In this folder, the main functions of the program are tested. The testing is performed using the library [hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html). Two types of testing are performed:
+> ➡️ **`System.py`** 
+> 
+> This class stores a `Field` and an `Atom` instances.\
+> In addition, the class is enriched by two interaction parameters:
+> * `omega` : the *interaction coupling* (float);
+> * `delta` : the *interaction detuning* (float).
+> 
+> The class implements a set of complex differential equations through the  `Rabi_model` method that models the time evolution of the system using the Jaynes-Cummings model Hamiltonian.
 
-- **`prop_test.py`:** in this file we make sure that the **Field methods** `Dirac`, `Poisson`, and `BoseEinstein` are actually PDFs, thus we test that:
+---
 
-    - PDF(<img src="https://latex.codecogs.com/svg.image?n">) is non-negative for all possible values of n.
-    - PDF(<img src="https://latex.codecogs.com/svg.image?n">) over all possible values of <img src="https://latex.codecogs.com/svg.image?n"> is normalized.
+> ➡️ **`Simulation.py`**
+> 
+> This class contains a `System` instance and time information required to run a simulation on it:
+> * `time` : the *simulation duration* (float), 
+> * `tstep` : the *simulation time step* (float).
+> 
+> In particular, it is defined an odeint-like function for complex-valued differential equations `odeintz`.
 
-- **`oracle_test.py`:** in this file we check that the numerical solution that we obtain executing the simulation is compatible with the analytical solution provided by the theory. With this test we make sure that the algorithm used to solve the complex-differential equation is correct.
+---
+
+### **utilities**
+
+This folder contains several files that are required to run the simulation.
+
+---
+
+> ➡️ **`reading.py`** 
+> 
+> This file handles the input reading.\
+> In particular, a function `read_txt()` reads the parameter from a **.txt** file. By default, **input.txt** is the default input file but there is also the possibility to specify its name through `sys.argv[1]`.
+
+--- 
+
+> ➡️ **`plotting.py`** 
+> 
+> This file handles the graphical visualization of the evolution of the inversion function.\
+> The plot is saved as a **.png** file if `save_png` in the input file is set to `True`.
+
+--- 
+
+> ➡️ **`saving.py`** 
+> 
+> This file produces a **.txt** file containing the inversion function if `save_txt` in the input file is set to `True`. These data can be used later on to do more complex plots.
+
+---
+
+### **tests**
+
+In this folder, the main functions of the program are tested. The testing is mainly performed using the [hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html) library.
+
+---
+
+> ➡️ **`test_Atom.py`**
+> 
+> This test file checks if `Atom` istances are correctly initialized when valid states are given to the constructor, and viceversa, if errors are correctly raised when invalid states are provided.
+
+---
+
+> ➡️ **`test_Field.py`**
+> 
+> This test file checks if `Field` istances are correctly initialized when valid parameters are passed to the constructor, and viceversa, if errors are correctly raised when invalid parameters are provided.
+> Moreover, a property test is performed on the `Dirac`, `Poisson`, and `BoseEinstein` methods.
+
+---
+
+> ➡️ **`oracle_test.py`** 
+> 
+> This test file checks if the numerical solution that we obtain executing the simulation is compatible with the analytical solution provided by the theory. With this test we make sure that the algorithm used to solve the complex-differential equation is correct.
 An analytical solution is only available in this simplified case; if we want to extend our model to effects not considered so far, the numerical solution becomes the only viable one.
 
-### [Output](https://github.com/soniasalomoni/Rabi_oscillations_JCM/tree/main/Output)
+---
 
-This folder will contain the **.txt** and **.png** files if `save_txt` and  `save_png` in the `input.txt` file are set to `True`. The name of the file is specified by `out_label`. The **.png** file can be used to verify the expected behavior, while the **.txt** files can be used to build more complex graphical representation.
+---
 
-### [Jobs](https://github.com/soniasalomoni/Rabi_oscillations_JCM/tree/main/Jobs)
+## **examples**
 
-This folder contains two *jobscripts* (**.sh** files) containing the setup information needed to automatize the run of `Rabi.py` on different input files:
+Each example folder contains two files:
 
-- **`jobPDF.sh`:** this jobscript runs Rabi.py changing the type of PDF `pdf_n` (*Dirac*, *Poisson*, *BoseEinstein*) and keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override them.
-- **`jobAVGn.sh`:** this jobscript runs Rabi.py changing the average number of photons  `avg_n` (**10**, **30**, **50**) for a field in a coherent state and keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override the files. One can modify the selected PDF to observe the different behavior of Rabi oscillations in function of <img src="https://latex.codecogs.com/svg.image?\bar{n}">.
+---
 
-## Usage
+> ➡️ **`job.sh`** 
+> 
+> The *jobscript* contains the setup information needed to automatize the run of `rabi.py` on different input files.
 
-To **clone the repository** type:
+---
+
+> ➡️ **`rabi.py`** 
+> 
+> The *python script* performs the four steps (reading, running, plotting and saving) sequentially.
+
+---
+  
+### **ex_AVG_n**
+
+In this example, the jobscript runs `rabi.py` changing the type of PDF `pdf_n`  (**Dirac**, **Poisson**, **BoseEinstein**) while keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override them.
+In this example it is used the default input file name **input.txt**.
+
+### **ex_PDF_n**
+
+In this example the jobscript runs `Rabi.py` varying the average number of photons  `avg_n` (**10**, **30**, **50**) for a field in a coherent state (Poisson PDF) and keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override the files. One can modify the selected PDF to observe the different behavior of Rabi oscillations as a function of `avg_n`.
+In this example the input file name is changed according to the PDF used.
+
+---
+
+---
+
+## **Usage**
+
+To *clone the repository* type:
 ```bash
 git clone https://github.com/soniasalomoni/Rabi_oscillations_JCM.git
 cd Rabi_oscillations_JCM
 ```
-To **install the dependencies** type the command:
+To *install the dependencies* type the command:
 ```bash
-pip install -r Utilities/reqs.txt
+pip install -r reqs.txt
 ```
 
-To **launch the main script** `Rabi.py`, just type:
+To *run a test*, for example `oracle_test.py`, type the command:
 ```bash
-python Rabi.py
-```
-you also have the possibility to specify the name of the configuration file as `sys.argv[1]` (**input.txt** is the default configuration file), for example:
-```bash
-python Rabi.py my_input_file.txt
+cd rabi_model
+pytest tests/oracle_test.py
 ```
 
-To **run a test**, for example `prop_test.py`, type the command:
+To *run an example*, for example `example/ex_PDF_n`, type:
 ```bash
-pytest Testing/prop_test.py
-```
-
-To **run a jobscript**, for example `jobPDF.sh`, first type this command to make the script executable:
-```bash
-chmod u+x Jobs/jobPDF.sh
-```
-then:
-```
-./Jobs/jobPDF.sh
+cd example/ex_PDF_n
+chmod u+x job.sh
+bash job.sh
 ```
