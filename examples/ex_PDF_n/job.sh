@@ -3,7 +3,7 @@
 PDFs="Dirac Poisson BoseEinstein"
 
 for PDF in $PDFs; do
-cat > input.txt << EOF
+cat > in.txt << EOF
 
 [field]
 avg_n = 10
@@ -25,11 +25,11 @@ step = 0.01
 [output]
 save_txt = True
 save_png = True
-out_label = output_$PDF
+out_label = output_$PDFcd ..
 
 EOF
 
-python rabi.py
+python rabi.py in.txt
 
 done
 
