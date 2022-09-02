@@ -5,7 +5,7 @@ class System():
     """
     The System class stores all the parameters that describe the system composed by the cavity field and the atom.
     In addition, the class is enriched by some interaction parameters (coupling e detuning).
-    The class implement a set of complex differential equations self.Rabi_model that model the time evolution
+    The class implement a set of complex differential equations self.rabi_model that model the time evolution
     of the system using the Jaynes-Cummings model Hamiltonian.
     """
 
@@ -36,10 +36,10 @@ class System():
         self.delta = delta
 
         if self.omega < 0:
-            raise ValueError("The interaction coefficient (int_coupling) must be positive or 0.\n")
+            raise ValueError("The interaction coefficient omega must be positive or 0.\n")
 
 
-    def Rabi_model(self,z,t,n):
+    def rabi_model(self,z,t,n):
         """
         Implement a set of complex differential equations that model the time evolution
         of the system using the Jaynes-Cummings model Hamiltonian.
@@ -50,7 +50,7 @@ class System():
         Parameters:
         -----------
         z : array 
-            the state of the atom [g,e] 
+            the state of the atom [Cg,Ce] 
         t : array
             array of time points for which to solve the diffeferential equations
         n : integer
