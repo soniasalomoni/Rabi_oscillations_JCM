@@ -60,7 +60,7 @@ def test_BoseEinstein(AVG_N,PDF_N,CUT_N):
 def test_Field_raises(PDF):
     """
     This function tests if errors are correctly raised when 
-    invalid states are given to Atom constructor.
+    invalid parameters are given to Field constructor.
     """
     with pytest.raises(ValueError):
         rabi.Field(-1,PDF,100)
