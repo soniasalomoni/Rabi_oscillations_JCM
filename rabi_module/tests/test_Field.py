@@ -71,7 +71,12 @@ def test_Field_raises(PDF):
     with pytest.raises(ValueError):
         rabi.Field(100,PDF,1)
 
-def test_Field_thr():        
+def test_Field_thr():
+    """
+    This function tests if errors are correctly raised when 
+    the cutoff number of photons is not large enough compared
+    to the average number of photons.
+    """      
     rabi.Field(99,"Dirac",100)
     with pytest.raises(ValueError):
         rabi.Field(99,"Poisson",100)
