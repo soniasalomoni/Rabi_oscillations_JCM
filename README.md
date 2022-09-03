@@ -38,7 +38,7 @@ ___
 
 The repository is structured in the following folders:
 * **rabi_model**, which contains the actual package;
-* **examples**, which shows two usage examples of the code.
+* **examples**, which shows two usages examples of the code.
 
 ---
 
@@ -121,7 +121,7 @@ This folder contains several files that are required to run the simulation.
 
 > ➡️ **`saving.py`** 
 > 
-> This file produces a **.txt** file containing the inversion function if `save_txt` in the input file is set to `True`. These data can be used later on to do more complex plots.
+> This file handles the  produces a **.txt** file containing the inversion function if `save_txt` in the input file is set to `True`. These data can be used later on to do more complex plots.
 
 ---
 
@@ -142,6 +142,18 @@ In this folder, the main functions of the program are tested. The testing is mai
 > This test file checks if `Field` istances are correctly initialized when valid parameters are passed to the constructor, and viceversa, if errors are correctly raised when invalid parameters are provided.
 > Moreover, a property test is performed on the `Dirac`, `Poisson`, and `BoseEinstein` methods.
 
+---
+
+> ➡️ **`test_System.py`**
+> 
+> This test file checks if `System` istances are correctly initialized when valid parameters are passed to the constructor, and viceversa, if errors are correctly raised when invalid parameters are provided.
+
+---
+
+> ➡️ **`test_Simulation.py`**
+> 
+> This test file checks if `Simulation` istances are correctly initialized when valid parameters are passed to the constructor, and viceversa, if errors are correctly raised when invalid parameters are provided.
+> 
 ---
 
 > ➡️ **`oracle_test.py`** 
