@@ -7,13 +7,13 @@ class Simulation():
     In particular, it defines an odeint-like function for complex valued differential equations (self.odeintz).
     """
 
-    def __init__(self, System, time, tstep) -> None:
+    def __init__(self, system, time, tstep) -> None:
         """
         Initialized all the attributes of the class.
 
         Parameters
         ----------
-        System : System
+        system : System
             the system composed by the cavity field and the atom
         time : integer
             the simulation duration 
@@ -22,13 +22,19 @@ class Simulation():
 
         Raise:
         ------
-            ValueError if the simulation duration (tmax) or the simulation time step (tstep)
+            ValueError if the simulation duration (time) or the simulation time step (tstep)
             is negative.
             ValueError if the time step (tstep) is not sufficiently fine.
 
         """
         
-        self.System = System
+        self.system = system
+
+        if time < 0:
+            raise ValueError("The simulation duration (time) must be positive.\n")
+        if tstep < 0:
+            raise ValueError("The simulation time step (tstep) must be positive.\n")
+
         self.time = np.arange(0,time,tstep)
         self.thr = 0.01 # threshold for the rate tstep/time
         self.W_array = []
@@ -81,8 +87,8 @@ class Simulation():
         Calculate the atomic inversion function W(t).
         
         Inversion functions Wn(t) associated to a certain number of photons in the cavity (Fock states)
-        are calculated solving the differential equations described in self.System.Rabi_model using the
-        class method self.odeintz, then they are weighted up using self.System.Field.PDF (Probability
+        are calculated solving the differential equations described in self.system.rabi_model using the
+        class method self.odeintz, then they are weighted up using self.system.field.PDF (Probability
         Density Function of photon number) (PDF options: Dirac, Poisson, Bose-Einstein) and summed.
             
         Returns:
@@ -93,17 +99,17 @@ class Simulation():
         """
         W = 0 # the cavity is empty
         # we add all the contribution till the cut-off number of photons (N)
-        for n in range(0,self.System.Field.cut_n):                          
-            res = self.odeintz(self.System.Rabi_model, self.System.Atom.state, self.time, args=(n,))
+        for n in range(0,self.system.field.cut_n):                          
+            res = self.odeintz(self.system.rabi_model, self.system.atom.state, self.time, args=(n,))
             # probabilities
             P_g = res[:,0].real**2 + res[:,0].imag**2
             P_e = res[:,1].real**2 + res[:,1].imag**2
             # atomic inversion function Wn(t)
             Wn = P_e - P_g
             # sum the Wn(t) with a weighted coefficients
-            W = W + self.System.Field.PDF(n)*Wn
+            W = W + self.system.field.PDF(n)*Wn
         return W     # Inversion function W(t) 
 
     def run(self):
-        """ Run a simulation on self.System """
+        """ Run a simulation on self.system """
         self.W_array = self.W_numerical()
