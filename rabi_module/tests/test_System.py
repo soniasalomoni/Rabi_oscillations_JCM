@@ -13,11 +13,10 @@ sys.path.append('../.')
 import rabi_module as rabi
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]),
-OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10))
-
+    OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10))
 def test_System_init(PDF,OMEGA,DELTA):
     """
-    This function tests if Atom istances are correctly initialized
+    This function tests if System istances are correctly initialized
     when valid arguments are given to the System constructor.
     """
     field = rabi.Field(5,PDF,100)
