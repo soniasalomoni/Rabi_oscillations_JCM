@@ -9,15 +9,15 @@ class System():
     of the system using the Jaynes-Cummings model Hamiltonian.
     """
 
-    def __init__(self, Field, Atom, omega, delta) -> None:
+    def __init__(self, field, atom, omega, delta) -> None:
         """
         Initialized all the attributes of the class.
 
         Parameters
         ----------
-        Field : Field
+        field : Field
             the cavity field instance
-        Atom : Atom
+        atom : Atom
             the atom instance
         omega: float
             the interaction coupling
@@ -30,8 +30,8 @@ class System():
 
         """
         
-        self.Field = Field
-        self.Atom = Atom
+        self.field = field
+        self.atom = atom
         self.omega = omega
         self.delta = delta
 

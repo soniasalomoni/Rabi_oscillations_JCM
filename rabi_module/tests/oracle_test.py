@@ -22,18 +22,18 @@ def W_analytical(simulation):
         the simulation instance we want to compute
 
     """
-    W = - simulation.System.Field.PDF(0) # the cavity is empty
+    W = - simulation.system.field.PDF(0) # the cavity is empty
 
     # some useful shortcuts
-    omega2 = simulation.System.omega**2
-    delta2 = simulation.System.delta**2
+    omega2 = simulation.system.omega**2
+    delta2 = simulation.system.delta**2
 
     # we add all the contribution till the cut-off number of photons (N)
-    for n in range(1,simulation.System.Field.cut_n):
+    for n in range(1,simulation.system.field.cut_n):
         omegaR = np.sqrt(delta2 + n*omega2)
         omegaR2 = omegaR**2
         t = simulation.time                            
-        W = W - simulation.System.Field.PDF(n)*( delta2/omegaR2 + ((n*omega2)/omegaR2)*np.cos(t*omegaR)) 
+        W = W - simulation.system.field.PDF(n)*( delta2/omegaR2 + ((n*omega2)/omegaR2)*np.cos(t*omegaR)) 
 
     return W
 
