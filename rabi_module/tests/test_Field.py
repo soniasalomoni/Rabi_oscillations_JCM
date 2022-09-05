@@ -2,6 +2,7 @@
 ## test Field class ##
 ## ---------------- ##
 
+from ssl import RAND_add
 from hypothesis import strategies as st
 from hypothesis import given
 
@@ -64,6 +65,19 @@ def test_BoseEinstein_PDF(AVG_N,PDF_N,CUT_N):
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.BoseEinstein,field.cut_n)
     assert(bool == True) , "Field.BoseEinstein is not a PDF"
+
+@given(AVG_N = st.integers(0,50), PDF_N = st.just("Dirac"), CUT_N = st.integers(100,300),
+    RANDN = st.integers(0,100))
+def test_Dirac_prop(AVG_N,PDF_N,CUT_N, RANDN):
+    """
+    This function tests if rabi.field.Dirac models a Dirac PDF,
+    thus it should return 1 if n equals the average number of photons
+    and 0 in any other case.
+    """
+    field = rabi.Field(AVG_N,PDF_N,CUT_N)
+    assert(field.Dirac(AVG_N) == 1)
+    if RANDN != AVG_N:
+        assert(field.Dirac(RANDN) == 0)
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]))
 def test_Field_raises(PDF):
