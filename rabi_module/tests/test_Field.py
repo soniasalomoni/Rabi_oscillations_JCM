@@ -3,6 +3,7 @@
 ## ---------------- ##
 
 
+from re import A
 from hypothesis import strategies as st
 from hypothesis import given
 
@@ -98,6 +99,25 @@ def test_Poisson_prop(AVG_N,PDF_N,CUT_N, RANDN):
     values = np.array(500)
     probs = field.Poisson(values)
     assert(np.var(probs) - AVG_N < 0.001)
+
+@given(AVG_N = st.integers(0,20), PDF_N = st.just("BoseEinstein"), CUT_N = st.integers(100,300),
+    RANDN = st.integers(0,100))
+def test_BoseEinstein_prop(AVG_N,PDF_N,CUT_N, RANDN):
+    """
+    This function tests if rabi.field.Dirac models a Poisson PDF,
+    thus its main mathematical properties are checked
+    """
+    field = rabi.Field(AVG_N,PDF_N,CUT_N)
+    if AVG_N !=0:
+        # if the average number of photons is not 0, any probability is greater than 0
+        assert(field.BoseEinstein(RANDN) > 0)
+        # and the PDF is strictly descending
+        assert(field.BoseEinstein(RANDN) > field.BoseEinstein(RANDN+1))
+        # check the probability for 0 photons
+        assert(field.BoseEinstein(0) - 1/(1+AVG_N) < 0.001)
+    else:
+        # if the average number of photons is 0, the PDF is like a Dirac one
+        assert(field.BoseEinstein(RANDN) == field.Dirac(RANDN))
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]))
 def test_Field_raises(PDF):
