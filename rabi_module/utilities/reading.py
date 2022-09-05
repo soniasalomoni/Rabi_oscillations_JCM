@@ -8,7 +8,7 @@ import rabi_module as rabi
 
 # define reading function
 
-def read_txt():
+def read_txt(input_file = "input.txt"):
     """
     Reads input parameters from a .txt file
 
@@ -27,14 +27,7 @@ def read_txt():
     """
     # initialize config 
     config = configparser.ConfigParser()
-
-    # It is given the possibility to specify the configuration file as second argument in the bash command: sys.argv[1]  
-    # The default configuration file if not specified through sys.argv[1] is "input.txt".
-
-    if len(argv)>=2:
-        config.read(argv[1])
-    else:
-        config.read("input.txt")
+    config.read(input_file)
 
     # --------------------- #
     # initialize parameters #

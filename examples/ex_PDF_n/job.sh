@@ -3,7 +3,7 @@
 PDFs="Dirac Poisson BoseEinstein"
 
 for PDF in $PDFs; do
-cat > input_${PDF}.txt << EOF
+cat > input.txt << EOF
 
 [field]
 avg_n = 10
@@ -29,7 +29,7 @@ out_label = output_${PDF}
 
 EOF
 
-python rabi.py input_${PDF}.txt
+python rabi.py
 
 done
 
