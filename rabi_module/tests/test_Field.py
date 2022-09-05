@@ -2,7 +2,7 @@
 ## test Field class ##
 ## ---------------- ##
 
-from ssl import RAND_add
+
 from hypothesis import strategies as st
 from hypothesis import given
 
@@ -78,6 +78,26 @@ def test_Dirac_prop(AVG_N,PDF_N,CUT_N, RANDN):
     assert(field.Dirac(AVG_N) == 1)
     if RANDN != AVG_N:
         assert(field.Dirac(RANDN) == 0)
+
+@given(AVG_N = st.integers(0,50), PDF_N = st.just("Dirac"), CUT_N = st.integers(100,300),
+    RANDN = st.integers(0,100))
+def test_Poisson_prop(AVG_N,PDF_N,CUT_N, RANDN):
+    """
+    This function tests if rabi.field.Dirac models a Poisson PDF,
+    thus its main mathematical properties are checked
+    """
+    field = rabi.Field(AVG_N,PDF_N,CUT_N)
+    if AVG_N != 0:
+        # if the average number of photons is not 0, any probability is greater than 0
+        assert(field.Poisson(RANDN) > 0)
+    else:
+        # if the average number of photons is 0, the Poisson PDF is like a Dirac one
+        assert(field.Poisson(RANDN) == field.Dirac(RANDN))
+
+    # for the Poisson PDF the average value is also equal to the variance
+    values = np.array(500)
+    probs = field.Poisson(values)
+    assert(np.var(probs) - AVG_N < 0.001)
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]))
 def test_Field_raises(PDF):
