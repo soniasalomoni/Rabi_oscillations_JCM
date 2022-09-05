@@ -39,19 +39,28 @@ def is_PDF(pdf, N):
         return True
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Dirac"), CUT_N = st.integers(100,300))
-def test_Dirac(AVG_N,PDF_N,CUT_N):
+def test_Dirac_PDF(AVG_N,PDF_N,CUT_N):
+    """
+    This function tests if rabi.field.Dirac is a PDF
+    """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.Dirac,field.cut_n)
     assert(bool == True) , "Field.Dirac is not a PDF"
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Poisson"), CUT_N = st.integers(100,300))
-def test_Poisson(AVG_N,PDF_N,CUT_N):
+def test_Poisson_PDF(AVG_N,PDF_N,CUT_N):
+    """
+    This function tests if rabi.field.Poisson is a PDF
+    """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.Poisson,field.cut_n)
     assert(bool == True) , "Field.Poisson is not a PDF"
 
 @given(AVG_N = st.integers(0,20), PDF_N = st.just("BoseEinstein"), CUT_N = st.integers(100,300))
-def test_BoseEinstein(AVG_N,PDF_N,CUT_N):
+def test_BoseEinstein_PDF(AVG_N,PDF_N,CUT_N):
+    """
+    This function tests if rabi.field.BoseEinstein is a PDF
+    """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.BoseEinstein,field.cut_n)
     assert(bool == True) , "Field.BoseEinstein is not a PDF"
