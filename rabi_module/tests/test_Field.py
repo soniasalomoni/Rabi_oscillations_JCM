@@ -79,7 +79,7 @@ def test_Dirac_prop(AVG_N,PDF_N,CUT_N, RANDN):
     if RANDN != AVG_N:
         assert(field.Dirac(RANDN) == 0)
 
-@given(AVG_N = st.integers(0,50), PDF_N = st.just("Dirac"), CUT_N = st.integers(100,300),
+@given(AVG_N = st.integers(0,50), PDF_N = st.just("Poisson"), CUT_N = st.integers(100,300),
     RANDN = st.integers(0,100))
 def test_Poisson_prop(AVG_N,PDF_N,CUT_N, RANDN):
     """
