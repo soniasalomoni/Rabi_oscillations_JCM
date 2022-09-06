@@ -31,8 +31,8 @@ def test_System_init(PDF, OMEGA, DELTA):
 
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]),
-    OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10),
-    RANDN = st.integers(0,10), RANDN_2 = st.integers(0,10))
+    OMEGA = st.floats(0,1), DELTA = st.floats(-10,10),
+    RANDN = st.integers(0,10), RANDN2 = st.integers(0,10))
 def test_System_prop(PDF, OMEGA, DELTA, RANDN, RANDN2):
     """
     This function tests if the model implemented in System is physical.
