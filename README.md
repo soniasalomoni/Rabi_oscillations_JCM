@@ -180,6 +180,7 @@ In this folder, the main functions of the program are tested. The testing is mai
 > ➡️ **`test_Simulation.py`**
 > 
 > This test file checks if `Simulation` istances are correctly initialized when valid parameters are passed to the constructor, and viceversa, if errors are correctly raised when invalid parameters are provided.
+> Finally, it is tested that during the simulations the internal parameters evolve correctly or remain contant as expected
 > 
 ---
 
