@@ -211,12 +211,12 @@ Each example folder contains two files:
 
 ---
   
-### **ex_AVG_n**
+### **ex_PDF_n**
 
 In this example, the jobscript runs `rabi.py` changing the type of PDF `pdf_n`  (**Dirac**, **Poisson**, **BoseEinstein**) while keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override them.
 In this example it is used the default input file name **input.txt**.
 
-### **ex_PDF_n**
+### **ex_AVG_n**
 
 In this example the jobscript runs `rabi.py` varying the average number of photons  `avg_n` (**10**, **30**, **50**) for a field in a coherent state (Poisson PDF) and keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override the files. One can modify the selected PDF to observe the different behavior of Rabi oscillations as a function of `avg_n`.
 In this example the input file name is changed according to the PDF used.
