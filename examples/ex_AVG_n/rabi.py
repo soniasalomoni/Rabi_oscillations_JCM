@@ -33,7 +33,7 @@ fig = rabi.plot_W(simulation)
 
 # saving
 if SAVE_TXT == True:
-    rabi.save_txt(simulation, OUT_LABEL)
+    rabi.save_txt(simulation, label = OUT_LABEL)
 
 if SAVE_PNG == True:
     plt.savefig('./{}.png'.format(OUT_LABEL))

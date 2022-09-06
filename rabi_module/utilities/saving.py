@@ -1,17 +1,9 @@
 
 import numpy as np
-from sys import argv
-
-# open input file 
-
-if len(argv)>=2:
-    fin = open(argv[1])
-else:
-    fin = open('input.txt','r+')
 
 # define saving function
 
-def save_txt(simulation, label = "output"):
+def save_txt(simulation, input_file = "input.txt", label = "output"):
     """
     Save simulation results (atomic inversion function) to a .txt file.
     At the beginning of the file, input parameters are printed as comments.
@@ -20,10 +12,14 @@ def save_txt(simulation, label = "output"):
     -----------
     simulation : Simulation 
         the Simulation instance whose inversion function is saved
+    input_file : str 
+        the name of the input file from which the parameters were read
     label : str
         the name of the .txt output file
 
     """
+
+    fin = open(input_file,'r+')
     fout = open('./{}.txt'.format(label),'w+')
     # write simulation input parameters
     fout.write('# This output.txt file was obtained running a\n# simulation with these input parameters\n\n')
