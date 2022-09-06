@@ -44,6 +44,12 @@ def W_analytical(simulation):
 def test_simulation(AVG_N,PDF_N,CUT_N,Cg,Ce,OMEGA,DELTA,TIME,TSTEP):
     """
     Compare the analytical and numerical solution of the same system.
+
+    GIVEN:  two identical rabi.Simulation objects
+    WHEN:   a numerical simulation is run on one simulation,
+            while for the other the inversion function is obtained
+            with the analytical solution
+    THEN:   the numerical result should be equal to the analytical result
     """
     thr = 0.001
 
