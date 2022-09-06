@@ -18,10 +18,10 @@ TMAX, TSTEP = simulation_info
 SAVE_TXT, SAVE_PNG, OUT_LABEL = saving_info
 
 # creating objects
-field = rabi.Field(AVG_N,PDF_N,CUT_N)
-atom = rabi.Atom(Cg_0,Ce_0)
+field = rabi.Field(AVG_N, PDF_N, CUT_N)
+atom = rabi.Atom(Cg_0, Ce_0)
 system = rabi.System(field, atom, OMEGA, DELTA)
-simulation = rabi.Simulation(system,TMAX,TSTEP)
+simulation = rabi.Simulation(system, TMAX, TSTEP)
 
 # running
 simulation.run()
