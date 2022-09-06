@@ -1,10 +1,5 @@
 
 import configparser
-import sys
-from sys import argv
-
-sys.path.append('..')
-import rabi_module as rabi
 
 # define reading function
 
@@ -14,17 +9,24 @@ def read_txt(input_file = "input.txt"):
 
     Parameters:
     -----------
-    simulation : Simulation 
-        the Simulation instance whose inversion function is saved
-    label : str
-        the name of the .txt output file
+    input_file : str 
+        the name of the input file from which the parameters are read
     
     Returns:
     --------
     read_info : tuple
-        a tuple containing all the readed information
+        a tuple containing all the readed information, oganized as:
 
+        read_info = (field_info, atom_info, system_info, simulation_info, saving_info)
+
+        field_info = (AVG_N, PDF_N, CUT_N)
+        atom_info = (Cg_0, Ce_0)
+        system_info = (OMEGA, DELTA)
+        simulation_info = (TMAX, TSTEP)
+        saving_info = (SAVE_TXT, SAVE_PNG, OUT_LABEL)
+        
     """
+    
     # initialize config 
     config = configparser.ConfigParser()
     config.read(input_file)
