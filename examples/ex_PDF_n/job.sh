@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This job launches 3 simulations with different distribution of probability
+# (Dirac, Poisson, BoseEinstein)
+# The other parameters are listed below
+
 PDFs="Dirac Poisson BoseEinstein"
 
 for PDF in $PDFs; do
