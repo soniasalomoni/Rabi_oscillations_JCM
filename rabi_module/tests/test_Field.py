@@ -173,6 +173,10 @@ def test_Field_thr():
     This function tests if errors are correctly raised when 
     the cutoff number of photons is not large enough compared
     to the average number of photons.
+
+    GIVEN:  invalid input parameters (cut_n not large enough)
+    WHEN:   the Field constructor is called (POisson, BoseEinstein)
+    THEN:   ValueErrors should be raised (Dirac should pass)
     """      
     rabi.Field(99,"Dirac",100)
     with pytest.raises(ValueError):
