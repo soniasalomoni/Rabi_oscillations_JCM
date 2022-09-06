@@ -173,7 +173,7 @@ In this folder, the main functions of the program are tested. The testing is mai
 
 > ➡️ **`test_System.py`**
 > 
-> This test file checks if `System` istances are correctly initialized when valid parameters are passed to the constructor, and viceversa, if errors are correctly raised when invalid parameters are provided.
+> This test file checks if `System` istances are correctly initialized when valid parameters are passed to the constructor, and viceversa, if errors are correctly raised when invalid parameters are provided. Moreover, it is tested the physical meaning of the atomic state time evolution determined by the model implemented in the class.
 
 ---
 
