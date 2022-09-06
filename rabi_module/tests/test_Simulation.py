@@ -16,7 +16,7 @@ import rabi_module as rabi
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]),
     OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10),
     TIME = st.integers(50,100), TSTEP = st.decimals(0.001, 0.1))
-def test_System_init(PDF,OMEGA,DELTA, TIME, TSTEP):
+def test_Simulation_init(PDF,OMEGA,DELTA, TIME, TSTEP):
     """
     This function tests if Simulation istances are correctly initialized
     when valid arguments are given to the Simulation constructor.
@@ -33,7 +33,7 @@ def test_System_init(PDF,OMEGA,DELTA, TIME, TSTEP):
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]),
     OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10),)
-def test_System_raises(PDF,OMEGA,DELTA):
+def test_Simulation_raises(PDF,OMEGA,DELTA):
     """
     This function tests if errors are correctly raised when 
     invalid parameters are given to System constructor.
