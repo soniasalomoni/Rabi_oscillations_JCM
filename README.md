@@ -18,6 +18,8 @@ The relative simplicity of the JCM and the ease with which it can be extended th
 ___
 
 > ### **INDEX**
+> 
+> [**Usage**](#Usage)
 >
 > [**Repository Structure**](#Repository-Structure)
 > - [rabi_model](#rabi_model)
@@ -27,10 +29,35 @@ ___
 > - [examples](#examples)
 >   - [ex1](#ex1)
 >   - [ex2](#ex2)
-> 
-> [**Usage**](#Usage)
+
 
 ___
+
+
+## **Usage**
+
+To *clone the repository* type:
+```bash
+git clone https://github.com/soniasalomoni/Rabi_oscillations_JCM.git
+cd Rabi_oscillations_JCM
+```
+To *install the dependencies* type the command:
+```bash
+pip install -r reqs.txt
+```
+
+To *run a test*, for example `oracle_test.py`, type the command:
+```bash
+cd rabi_model
+pytest tests/oracle_test.py
+```
+
+To *run an example*, for example `example/ex_PDF_n`, type:
+```bash
+cd example/ex_PDF_n
+chmod u+x job.sh
+bash job.sh
+```
 
 ---
 
@@ -108,7 +135,7 @@ This folder contains several files that are required to run the simulation.
 > ➡️ **`reading.py`** 
 > 
 > This file handles the input reading.\
-> In particular, a function `read_txt()` reads the parameter from a **.txt** file. By default, **input.txt** is the default input file but there is also the possibility to specify its name through `sys.argv[1]`.
+> In particular, a function `read_txt()` reads the parameter from a **.txt** file. By default, **input.txt** is the default input file but there is also the possibility to specify its name through the first argument.
 
 --- 
 
@@ -190,34 +217,7 @@ In this example it is used the default input file name **input.txt**.
 
 ### **ex_PDF_n**
 
-In this example the jobscript runs `Rabi.py` varying the average number of photons  `avg_n` (**10**, **30**, **50**) for a field in a coherent state (Poisson PDF) and keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override the files. One can modify the selected PDF to observe the different behavior of Rabi oscillations as a function of `avg_n`.
+In this example the jobscript runs `rabi.py` varying the average number of photons  `avg_n` (**10**, **30**, **50**) for a field in a coherent state (Poisson PDF) and keeping unchanged the rest of input parameters. The label of the output files are also modified accordingly in order to not override the files. One can modify the selected PDF to observe the different behavior of Rabi oscillations as a function of `avg_n`.
 In this example the input file name is changed according to the PDF used.
 
 ---
-
----
-
-## **Usage**
-
-To *clone the repository* type:
-```bash
-git clone https://github.com/soniasalomoni/Rabi_oscillations_JCM.git
-cd Rabi_oscillations_JCM
-```
-To *install the dependencies* type the command:
-```bash
-pip install -r reqs.txt
-```
-
-To *run a test*, for example `oracle_test.py`, type the command:
-```bash
-cd rabi_model
-pytest tests/oracle_test.py
-```
-
-To *run an example*, for example `example/ex_PDF_n`, type:
-```bash
-cd example/ex_PDF_n
-chmod u+x job.sh
-bash job.sh
-```
