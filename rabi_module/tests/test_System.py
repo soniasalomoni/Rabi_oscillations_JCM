@@ -18,6 +18,10 @@ def test_System_init(PDF,OMEGA,DELTA):
     """
     This function tests if System istances are correctly initialized
     when valid arguments are given to the System constructor.
+
+    GIVEN:  valid input parameters
+    WHEN:   the System constructor is called
+    THEN:   a System instance should be initialized without raising errors
     """
     field = rabi.Field(5,PDF,100)
     atom = rabi.Atom(1,0)
@@ -29,6 +33,10 @@ def test_System_raises(PDF,DELTA):
     """
     This function tests if errors are correctly raised when 
     invalid parameters are given to System constructor.
+
+    GIVEN:  invalid input parameters
+    WHEN:   the System constructor is called
+    THEN:   ValueErrors should be raised
     """
     field = rabi.Field(5,PDF,100)
     atom = rabi.Atom(1,0)

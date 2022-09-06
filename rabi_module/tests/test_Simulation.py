@@ -20,6 +20,10 @@ def test_System_init(PDF,OMEGA,DELTA, TIME, TSTEP):
     """
     This function tests if Simulation istances are correctly initialized
     when valid arguments are given to the Simulation constructor.
+
+    GIVEN:  valid input parameters
+    WHEN:   the Simulation constructor is called
+    THEN:   a Simulation instance should be initialized without raising errors
     """
     field = rabi.Field(5,PDF,100)
     atom = rabi.Atom(1,0)
@@ -33,6 +37,10 @@ def test_System_raises(PDF,OMEGA,DELTA):
     """
     This function tests if errors are correctly raised when 
     invalid parameters are given to System constructor.
+
+    GIVEN:  invalid input parameters
+    WHEN:   the Simulation constructor is called
+    THEN:   ValueErrors should be raised
     """
     field = rabi.Field(5,PDF,100)
     atom = rabi.Atom(1,0)

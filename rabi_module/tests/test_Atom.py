@@ -19,6 +19,10 @@ def test_Atom_init(coeff):
     """
     This function tests if Atom istances are correctly initialized
     when valid states are given to Atom constructor.
+
+    GIVEN:  valid input parameters
+    WHEN:   the Atom constructor is called
+    THEN:   an Atom instance should be initialized without raising errors
     """
     C1 = coeff
     C2 = np.sqrt(1-coeff**2)
@@ -32,6 +36,10 @@ def test_Atom_raises():
     """
     This function tests if errors are correctly raised when 
     invalid states are given to Atom constructor.
+
+    GIVEN:  invalid input parameters
+    WHEN:   the Atom constructor is called
+    THEN:   ValueErrors should be raised
     """
     with pytest.raises(ValueError):
         rabi.Atom(0,0)

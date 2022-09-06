@@ -44,6 +44,11 @@ def is_PDF(pdf, N):
 def test_Dirac_PDF(AVG_N,PDF_N,CUT_N):
     """
     This function tests if rabi.field.Dirac is a PDF
+
+    GIVEN:  a Field istance with valid parameters for the average number of photons
+            and the cutoff number of photons 
+    WHEN:   the method rabi.field.Dirac is called
+    THEN:   the results should satisfy mathematical properties of a generic PDF
     """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.Dirac,field.cut_n)
@@ -53,6 +58,11 @@ def test_Dirac_PDF(AVG_N,PDF_N,CUT_N):
 def test_Poisson_PDF(AVG_N,PDF_N,CUT_N):
     """
     This function tests if rabi.field.Poisson is a PDF
+
+    GIVEN:  a Field istance with valid parameters for the average number of photons
+            and the cutoff number of photons 
+    WHEN:   the method rabi.field.Poisson is called
+    THEN:   the results should satisfy mathematical properties of a generic PDF
     """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.Poisson,field.cut_n)
@@ -62,6 +72,11 @@ def test_Poisson_PDF(AVG_N,PDF_N,CUT_N):
 def test_BoseEinstein_PDF(AVG_N,PDF_N,CUT_N):
     """
     This function tests if rabi.field.BoseEinstein is a PDF
+
+    GIVEN:  a Field istance with valid parameters for the average number of photons
+            and the cutoff number of photons 
+    WHEN:   the method rabi.field.BoseEinstein is called
+    THEN:   the results should satisfy mathematical properties of a generic PDF
     """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     bool = is_PDF(field.BoseEinstein,field.cut_n)
@@ -74,6 +89,11 @@ def test_Dirac_prop(AVG_N,PDF_N,CUT_N, RANDN):
     This function tests if rabi.field.Dirac models a Dirac PDF,
     thus it should return 1 if n equals the average number of photons
     and 0 in any other case.
+
+    GIVEN:  a Field istance with valid parameters for the average number of photons
+            and the cutoff number of photons 
+    WHEN:   the method rabi.field.Dirac is called
+    THEN:   the results should satisfy mathematical properties of a Dirac distribution
     """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     assert(field.Dirac(AVG_N) == 1)
@@ -86,6 +106,11 @@ def test_Poisson_prop(AVG_N,PDF_N,CUT_N, RANDN):
     """
     This function tests if rabi.field.Dirac models a Poisson PDF,
     thus its main mathematical properties are checked
+
+    GIVEN:  a Field istance with valid parameters for the average number of photons
+            and the cutoff number of photons 
+    WHEN:   the method rabi.field.Poisson is called
+    THEN:   the results should satisfy mathematical properties of a Poisson distribution
     """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     if AVG_N != 0:
@@ -106,6 +131,11 @@ def test_BoseEinstein_prop(AVG_N,PDF_N,CUT_N, RANDN):
     """
     This function tests if rabi.field.Dirac models a Poisson PDF,
     thus its main mathematical properties are checked
+
+    GIVEN:  a Field istance with valid parameters for the average number of photons
+            and the cutoff number of photons 
+    WHEN:   the method rabi.field.BoseEinstein is called
+    THEN:   the results should satisfy mathematical properties of a Bose-Einstein distribution
     """
     field = rabi.Field(AVG_N,PDF_N,CUT_N)
     if AVG_N !=0:
@@ -124,6 +154,10 @@ def test_Field_raises(PDF):
     """
     This function tests if errors are correctly raised when 
     invalid parameters are given to Field constructor.
+
+    GIVEN:  invalid input parameters
+    WHEN:   the Field constructor is called
+    THEN:   ValueErrors should be raised
     """
     with pytest.raises(ValueError):
         rabi.Field(-1,PDF,100)
