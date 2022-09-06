@@ -5,7 +5,7 @@ class Atom():
     By defalut,  the Atom is initialized in the ground state.
     """
 
-    def __init__(self,Cg=1,Ce=0) -> None:
+    def __init__(self, Cg=1, Ce=0) -> None:
         """
         Initialized all the attributes of the class.
 
@@ -39,4 +39,4 @@ class Atom():
             raise ValueError("the ground state (Cg) and excited state (Ce) coefficients are not normalized.\n")
 
         # redundant but convenient information
-        self.state = [Cg,Ce]
+        self.state = [Cg, Ce]

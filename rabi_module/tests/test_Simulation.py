@@ -73,7 +73,7 @@ def test_Simulation_prop(PDF, OMEGA, DELTA, TIME, TSTEP):
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]),
     OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10),)
-def test_Simulation_raises(PDF,OMEGA,DELTA):
+def test_Simulation_raises(PDF, OMEGA, DELTA):
     """
     This function tests if errors are correctly raised when 
     invalid parameters are given to System constructor.

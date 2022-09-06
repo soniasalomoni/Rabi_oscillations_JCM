@@ -7,7 +7,7 @@ class Field():
     Dirac, Poisson, BoseEinstein.
     """
 
-    def __init__(self,avg_n,pdf_n,cut_n) -> None:
+    def __init__(self, avg_n, pdf_n, cut_n) -> None:
         """
         Initialized all the attributes of the class.
 
@@ -62,7 +62,7 @@ class Field():
 
     # define the allowed PDF (Probability Density Function) of photons
 
-    def Dirac(self,n):
+    def Dirac(self, n):
         """
         Model a Dirac distribution of photons.
 
@@ -83,7 +83,7 @@ class Field():
         if n == self.avg_n: return 1
         else: return 0
 
-    def Poisson(self,n):
+    def Poisson(self, n):
         """
         Model a Poisson distribution of photons.
 
@@ -104,7 +104,7 @@ class Field():
         fac = np.math.factorial(n)
         return (self.avg_n**n)/fac*np.exp(-self.avg_n)
 
-    def BoseEinstein(self,n):
+    def BoseEinstein(self, n):
         """
         Model a Bose-Einstein distribution of photons.
 

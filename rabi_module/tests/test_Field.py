@@ -41,7 +41,7 @@ def is_PDF(pdf, N):
         return True
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Dirac"), CUT_N = st.integers(100,300))
-def test_Dirac_PDF(AVG_N,PDF_N,CUT_N):
+def test_Dirac_PDF(AVG_N, PDF_N, CUT_N):
     """
     This function tests if rabi.field.Dirac is a PDF
 
@@ -55,7 +55,7 @@ def test_Dirac_PDF(AVG_N,PDF_N,CUT_N):
     assert(bool == True) , "Field.Dirac is not a PDF"
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Poisson"), CUT_N = st.integers(100,300))
-def test_Poisson_PDF(AVG_N,PDF_N,CUT_N):
+def test_Poisson_PDF(AVG_N,  PDF_N, CUT_N):
     """
     This function tests if rabi.field.Poisson is a PDF
 
@@ -69,7 +69,7 @@ def test_Poisson_PDF(AVG_N,PDF_N,CUT_N):
     assert(bool == True) , "Field.Poisson is not a PDF"
 
 @given(AVG_N = st.integers(0,20), PDF_N = st.just("BoseEinstein"), CUT_N = st.integers(100,300))
-def test_BoseEinstein_PDF(AVG_N,PDF_N,CUT_N):
+def test_BoseEinstein_PDF(AVG_N, PDF_N, CUT_N):
     """
     This function tests if rabi.field.BoseEinstein is a PDF
 
@@ -84,7 +84,7 @@ def test_BoseEinstein_PDF(AVG_N,PDF_N,CUT_N):
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Dirac"), CUT_N = st.integers(100,300),
     RANDN = st.integers(0,100))
-def test_Dirac_prop(AVG_N,PDF_N,CUT_N, RANDN):
+def test_Dirac_prop(AVG_N, PDF_N, CUT_N, RANDN):
     """
     This function tests if rabi.field.Dirac models a Dirac PDF,
     thus it should return 1 if n equals the average number of photons
@@ -95,14 +95,14 @@ def test_Dirac_prop(AVG_N,PDF_N,CUT_N, RANDN):
     WHEN:   the method rabi.field.Dirac is called
     THEN:   the results should satisfy mathematical properties of a Dirac distribution
     """
-    field = rabi.Field(AVG_N,PDF_N,CUT_N)
+    field = rabi.Field(AVG_N, PDF_N, CUT_N)
     assert(field.Dirac(AVG_N) == 1)
     if RANDN != AVG_N:
         assert(field.Dirac(RANDN) == 0)
 
 @given(AVG_N = st.integers(0,50), PDF_N = st.just("Poisson"), CUT_N = st.integers(100,300),
     RANDN = st.integers(0,100))
-def test_Poisson_prop(AVG_N,PDF_N,CUT_N, RANDN):
+def test_Poisson_prop(AVG_N, PDF_N, CUT_N, RANDN):
     """
     This function tests if rabi.field.Dirac models a Poisson PDF,
     thus its main mathematical properties are checked
@@ -112,7 +112,7 @@ def test_Poisson_prop(AVG_N,PDF_N,CUT_N, RANDN):
     WHEN:   the method rabi.field.Poisson is called
     THEN:   the results should satisfy mathematical properties of a Poisson distribution
     """
-    field = rabi.Field(AVG_N,PDF_N,CUT_N)
+    field = rabi.Field(AVG_N, PDF_N, CUT_N)
     if AVG_N != 0:
         # if the average number of photons is not 0, any probability is greater than 0
         assert(field.Poisson(RANDN) > 0)
@@ -127,7 +127,7 @@ def test_Poisson_prop(AVG_N,PDF_N,CUT_N, RANDN):
 
 @given(AVG_N = st.integers(0,20), PDF_N = st.just("BoseEinstein"), CUT_N = st.integers(100,300),
     RANDN = st.integers(0,100))
-def test_BoseEinstein_prop(AVG_N,PDF_N,CUT_N, RANDN):
+def test_BoseEinstein_prop(AVG_N, PDF_N, CUT_N, RANDN):
     """
     This function tests if rabi.field.Dirac models a Poisson PDF,
     thus its main mathematical properties are checked
@@ -137,7 +137,7 @@ def test_BoseEinstein_prop(AVG_N,PDF_N,CUT_N, RANDN):
     WHEN:   the method rabi.field.BoseEinstein is called
     THEN:   the results should satisfy mathematical properties of a Bose-Einstein distribution
     """
-    field = rabi.Field(AVG_N,PDF_N,CUT_N)
+    field = rabi.Field(AVG_N, PDF_N, CUT_N)
     if AVG_N !=0:
         # if the average number of photons is not 0, any probability is greater than 0
         assert(field.BoseEinstein(RANDN) > 0)

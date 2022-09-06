@@ -41,7 +41,7 @@ def W_analytical(simulation):
 @given(AVG_N = st.just(5), PDF_N = st.just("Poisson"), CUT_N = st.just(50), \
        Cg = st.just(1), Ce = st.just(0), OMEGA = st.just(1), DELTA = st.just(0), \
        TIME = st.just(100), TSTEP = st.just(0.01))
-def test_simulation(AVG_N,PDF_N,CUT_N,Cg,Ce,OMEGA,DELTA,TIME,TSTEP):
+def test_simulation(AVG_N, PDF_N, CUT_N, Cg, Ce, OMEGA, DELTA, TIME, TSTEP):
     """
     Compare the analytical and numerical solution of the same system.
 
@@ -53,11 +53,11 @@ def test_simulation(AVG_N,PDF_N,CUT_N,Cg,Ce,OMEGA,DELTA,TIME,TSTEP):
     """
     thr = 0.001
 
-    field = rabi.Field(AVG_N,PDF_N,CUT_N)
-    atom = rabi.Atom(Cg,Ce)
+    field = rabi.Field(AVG_N, PDF_N, CUT_N)
+    atom = rabi.Atom(Cg, Ce)
     system = rabi.System(field, atom, OMEGA, DELTA)
-    simulation1 = rabi.Simulation(system,TIME,TSTEP)
-    simulation2 = rabi.Simulation(system,TIME,TSTEP)
+    simulation1 = rabi.Simulation(system, TIME, TSTEP)
+    simulation2 = rabi.Simulation(system, TIME, TSTEP)
     simulation2.run()
 
     W1 = W_analytical(simulation1) # analytical solution

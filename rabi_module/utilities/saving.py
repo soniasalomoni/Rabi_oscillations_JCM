@@ -11,7 +11,7 @@ else:
 
 # define saving function
 
-def save_txt(simulation,label = "output"):
+def save_txt(simulation, label = "output"):
     """
     Save simulation results (atomic inversion function) to a .txt file.
     At the beginning of the file, input parameters are printed as comments.

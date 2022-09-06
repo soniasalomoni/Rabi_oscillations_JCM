@@ -18,10 +18,10 @@ def plot_W(simulation):
 
     """
     fig, ax = plt.subplots(figsize=(7,3))
-    ax.plot(simulation.time,simulation.W_array,label='W(t)')
-    ax.set(title='Inversion function',xlabel='time [s]')
+    ax.plot(simulation.time, simulation.W_array, label='W(t)')
+    ax.set(title='Inversion function', xlabel='time [s]')
     ax.set(ylim=[-1.15,1.15])
     ax.legend(loc = 'lower right')
-    ax.grid(color='gray',alpha=0.8, linestyle='--')
+    ax.grid(color='gray', alpha=0.8, linestyle='--')
     fig.tight_layout()
     return fig

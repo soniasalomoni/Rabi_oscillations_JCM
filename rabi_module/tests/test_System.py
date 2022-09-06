@@ -16,7 +16,7 @@ import rabi_module as rabi
 
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]),
     OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10))
-def test_System_init(PDF,OMEGA,DELTA):
+def test_System_init(PDF, OMEGA, DELTA):
     """
     This function tests if System istances are correctly initialized
     when valid arguments are given to the System constructor.
@@ -33,7 +33,7 @@ def test_System_init(PDF,OMEGA,DELTA):
 @given(PDF = st.sampled_from(["Dirac","Poisson","BoseEinstein"]),
     OMEGA = st.decimals(0,1), DELTA = st.decimals(-10,10),
     RANDN = st.integers(0,10), RANDN_2 = st.integers(0,10))
-def test_System_prop(PDF,OMEGA,DELTA,RANDN, RANDN2):
+def test_System_prop(PDF, OMEGA, DELTA, RANDN, RANDN2):
     """
     This function tests if the model implemented in System is physical.
 
@@ -48,8 +48,8 @@ def test_System_prop(PDF,OMEGA,DELTA,RANDN, RANDN2):
     z = [atom.Cg, atom.Ce]
     t = np.arange(0,50,0.1)
     # we use different number of photons RANDN and RANDN2
-    dgdt, dedt = system.rabi_model(z,t,RANDN)
-    dgdt2, dedt2 = system.rabi_model(z,t,RANDN2)
+    dgdt, dedt = system.rabi_model(z, t, RANDN)
+    dgdt2, dedt2 = system.rabi_model(z, t, RANDN2)
 
     if system.omega == 0 and system.delta == 0:
         # if the atom and the field do not interact (omega = 0) and there is no detuning (delta = 0)

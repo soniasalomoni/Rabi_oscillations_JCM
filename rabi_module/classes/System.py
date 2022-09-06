@@ -39,7 +39,7 @@ class System():
             raise ValueError("The interaction coefficient omega must be positive or 0.\n")
 
 
-    def rabi_model(self,z,t,n):
+    def rabi_model(self, z, t, n):
         """
         Implement a set of complex differential equations that model the time evolution
         of the system using the Jaynes-Cummings model Hamiltonian.

@@ -28,8 +28,8 @@ def test_Atom_init(coeff):
     C2 = np.sqrt(1-coeff**2)
     default_atom = rabi.Atom()
     assert(default_atom.Cg == 1 and default_atom.Ce == 0), "By default the atom should be in the ground state"
-    first_atom = rabi.Atom(C1,C2)
-    second_atom = rabi.Atom(C2,C1)  
+    first_atom = rabi.Atom(C1, C2)
+    second_atom = rabi.Atom(C2, C1)  
     assert(first_atom.Cg == second_atom.Ce and first_atom.Ce == second_atom.Cg), "Initial states are not correctly initialized"  
 
 def test_Atom_raises():
